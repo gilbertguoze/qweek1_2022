@@ -1,7 +1,7 @@
 
 msg ?= git add
 
-.PHONY: tip git zsh clash
+.PHONY: tip git zsh clash github
 hello : 
 	@echo "hello world"
 	echo "second"
@@ -9,6 +9,12 @@ tip :
 	touch 78.md
 	@echo 345 > 78.md
 # 环境控制，目录名称，环境变量，文件复制
+github : 
+	-git pull origin main
+	git add .
+	-git commit -m "$(msg)"
+	@echo $$?
+	-git push -u origin main
 
 git : 
 	-git pull origin master
